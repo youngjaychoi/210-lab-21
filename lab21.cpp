@@ -5,6 +5,12 @@ using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 
+string names[15] = {"Name1", "Name2", "Name3", "Name4", "Name5", "Name6", "Name7", "Name8", "Name9",
+                    "Name10", "Name11", "Name12", "Name13", "Name14", "Name15"};
+
+string colors[15] = {"Color1", "Color2", "Color3", "Color4", "Color5", "Color6", "Color7", "Color8", "Color9", 
+                    "Color10", "Color11", "Color12", "Color13", "Color14", "Color15"};
+
 class Goat {
 private:
     int age;
@@ -13,7 +19,15 @@ private:
 
 public:
     Goat() {
-        
+        age = rand() % (MAX_NR - MIN_NR + 1) + MIN_NR;
+        name = names[rand() % 15];
+        color = colors[rand() % 15];
+    }
+
+    Goat(int a, string n, string c) : age(a), name(n), color(c) {}
+
+    void print() const {
+        cout << string(" ", 4) << name << " (" << color << ", " << age << ")";
     }
 };
 
