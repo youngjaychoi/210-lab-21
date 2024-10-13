@@ -3,7 +3,7 @@
 #include <ctime>
 using namespace std;
 
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+const int MIN_AGE = 1, MAX_AGE = 20, MIN_LS = 5, MAX_LS = 20;
 
 string names[15] = {"Name1", "Name2", "Name3", "Name4", "Name5", "Name6", "Name7", "Name8", "Name9",
                     "Name10", "Name11", "Name12", "Name13", "Name14", "Name15"};
@@ -19,7 +19,7 @@ private:
 
 public:
     Goat() {
-        age = rand() % (MAX_NR - MIN_NR + 1) + MIN_NR;
+        age = rand() % (MAX_AGE - MIN_AGE + 1) + MIN_AGE;
         name = names[rand() % 15];
         color = colors[rand() % 15];
     }
@@ -27,7 +27,7 @@ public:
     Goat(int a, string n, string c) { age = a; name = n; color = c; }
 
     void print() const {
-        cout << string(" ", 4) << name << " (" << color << ", " << age << ")";
+        cout << "    " << name << " (" << color << ", " << age << ")" << endl;
     }
 };
 
@@ -78,7 +78,6 @@ public:
         if (!current) return;
         while (current) {
             current->data.print();
-            cout << " ";
             current = current->next;
         }
         cout << endl;
@@ -89,7 +88,6 @@ public:
         if (!current) return;
         while (current) {
             current->data.print();
-            cout << " ";
             current = current->prev;
         }
         cout << endl;
@@ -114,15 +112,15 @@ int main() {
     for (int i = 0; i < size; ++i)
         list.push_back(Goat());
 
-    cout << "List forward: ";
+    cout << "List forward: " << endl;
     list.print();
 
-    cout << "List backward: ";
+    cout << "List backward: " << endl;
     list.print_reverse();
 
     cout << "Deleting list, then trying to print.\n";
     list.~DoublyLinkedList();
-    
+
     cout << "List forward: ";
     list.print();
 
